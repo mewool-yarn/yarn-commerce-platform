@@ -141,12 +141,14 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
     }
   }
 
+  // Items, summary and the heading count live in one section (Issue #124), so selectors are scoped by id.
   getSectionsToRender() {
+    const countElement = document.getElementById('YarnCartCount');
     return [
       {
         id: 'main-cart-items',
         section: document.getElementById('main-cart-items').dataset.id,
-        selector: '.js-contents',
+        selector: '#main-cart-items .js-contents',
       },
       {
         id: 'cart-icon-bubble',
@@ -161,8 +163,11 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
       {
         id: 'main-cart-footer',
         section: document.getElementById('main-cart-footer').dataset.id,
-        selector: '.js-contents',
+        selector: '#main-cart-footer .js-contents',
       },
+      ...(countElement
+        ? [{ id: 'YarnCartCount', section: document.getElementById('main-cart-items').dataset.id, selector: '#YarnCartCount' }]
+        : []),
     ];
   }
 
@@ -184,7 +189,7 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
     const body = JSON.stringify({
       line,
       quantity,
-      sections: sectionsToRender.map((section) => section.section),
+      sections: [...new Set(sectionsToRender.map((section) => section.section))],
       sections_url: window.location.pathname,
     });
 

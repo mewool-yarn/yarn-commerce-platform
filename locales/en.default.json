@@ -537,6 +537,26 @@
       "send_on_label": "Send on (optional)"
     }
   },
+  "yarn_cart": {
+    "title": "Cart",
+    "item_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    },
+    "subtotal": {
+      "one": "Subtotal ({{ count }} item)",
+      "other": "Subtotal ({{ count }} items)"
+    },
+    "heading_product": "Item",
+    "heading_quantity": "Quantity",
+    "heading_total": "Total",
+    "remove": "Remove",
+    "checkout": "Check out",
+    "summary_heading": "Order summary",
+    "empty_title": "Your cart is empty",
+    "option": "{{ name }}: {{ value }}",
+    "view_cart": "View cart"
+  },
   "yarn_pdp": {
     "per_ball": "/ ball",
     "per_ball_tax_included": "/ ball (tax incl.)",

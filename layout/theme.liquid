@@ -369,7 +369,8 @@
       {{ 'accessibility.skip_to_text' | t }}
     </a>
 
-    {%- if settings.cart_type == 'drawer' -%}
+    {%- comment -%} 购物车页自身就是完整购物车（#124），不再叠一层抽屉；页头图标在此页直接链接到本页。 {%- endcomment -%}
+    {%- if settings.cart_type == 'drawer' and template.name != 'cart' -%}
       {%- render 'cart-drawer' -%}
     {%- endif -%}
 

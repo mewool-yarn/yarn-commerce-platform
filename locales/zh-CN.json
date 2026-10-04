@@ -537,6 +537,26 @@
       "collapsed": "礼品卡收件人表单已折叠"
     }
   },
+  "yarn_cart": {
+    "title": "购物车",
+    "item_count": {
+      "one": "{{ count }} 件",
+      "other": "{{ count }} 件"
+    },
+    "subtotal": {
+      "one": "小计（{{ count }} 件）",
+      "other": "小计（{{ count }} 件）"
+    },
+    "heading_product": "商品",
+    "heading_quantity": "数量",
+    "heading_total": "金额",
+    "remove": "删除",
+    "checkout": "去结账",
+    "summary_heading": "订单小计",
+    "empty_title": "购物车还是空的",
+    "option": "{{ name }}：{{ value }}",
+    "view_cart": "查看购物车"
+  },
   "yarn_pdp": {
     "per_ball": "/ 团",
     "per_ball_tax_included": "/ 团（含税）",

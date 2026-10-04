@@ -111,21 +111,28 @@ async function inspectPage({ contentSelectors, ignoreSelectors }) {
   };
 }
 
+// 购物车页需要先有商品：用同一会话的 Cookie 加购，只加可售的 Variant。
+async function seedCart(context, baseUrl, products) {
+  const items = [];
+  for (const product of products) {
+    const data = await (await context.request.get(`${baseUrl}${product}.js`)).json();
+    const variant = data.variants.find(v => v.available);
+    if (variant) items.push({ id: variant.id, quantity: 1 });
+  }
+  if (!items.length) throw new Error('预置商品都不可售，无法检查购物车');
+  const response = await context.request.post(`${baseUrl}/cart/add.js`, { data: { items } });
+  if (!response.ok()) throw new Error(`预置加购失败 ${response.status()}`);
+}
+
+// 打开抽屉并返回商品列表的横向溢出（列表是滚动容器，溢出会出现左右滚动）。
 async function openCartDrawer(page) {
-  await page.evaluate(async () => {
-    const root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
-    const product = await (await fetch(`${location.pathname}.js`)).json();
-    const variant = product.variants.find(v => v.available) || product.variants[0];
-    await fetch(`${root}cart/add.js`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: [{ id: variant.id, quantity: 1 }] }),
-    });
-  });
-  await page.reload({ waitUntil: 'load' });
   await page.click('#cart-icon-bubble');
-  await page.waitForSelector('cart-drawer.active, cart-drawer .drawer.active, .drawer.active', { timeout: 8000 });
+  await page.waitForSelector('cart-drawer.active', { timeout: 8000 });
   await page.waitForTimeout(600);
+  return page.evaluate(() => {
+    const list = document.querySelector('cart-drawer-items');
+    return list ? list.scrollWidth - list.clientWidth : 0;
+  });
 }
 
 async function runJob(browser, job, baseUrl) {
@@ -154,6 +161,7 @@ async function runJob(browser, job, baseUrl) {
   });
 
   try {
+    if (target.seedProducts) await seedCart(context, baseUrl, target.seedProducts);
     const response = await page.goto(url, { waitUntil: 'load', timeout: 90000 });
     if (!response || response.status() !== 200) result.failures.push(`页面状态 ${response ? response.status() : '无响应'}`);
     if ((await page.content()).includes('Liquid error')) result.failures.push('页面含 Liquid error');
@@ -173,8 +181,11 @@ async function runJob(browser, job, baseUrl) {
     if (found.pendingImages) result.warnings.push(`${found.pendingImages} 张图片 8 秒内未加载完`);
     if (found.placeholders) result.warnings.push(`${found.placeholders} 个占位图（未设置图片）`);
 
-    if (target.openCart) await openCartDrawer(page);
     await page.evaluate(() => window.scrollTo(0, 0));
+    if (target.openCart) {
+      const drawerOverflow = await openCartDrawer(page);
+      if (drawerOverflow > 0) result.failures.push(`购物车抽屉横向溢出 ${drawerOverflow}px`);
+    }
     await page.waitForTimeout(300);
     result.shot = path.join('shots', viewport.key, `${locale.key}-${target.key}.png`);
     await page.screenshot({ path: path.join(OUT, result.shot) });

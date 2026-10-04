@@ -14,6 +14,7 @@ const KEEP = {
   'sections/yarn-project-library.liquid': '作品库，用户 2026-09-23 决定保留（#65）',
   'sections/yarn-project-discovery.liquid': '作品发现，用户 2026-09-23 决定保留（#65）',
   'sections/yarn-starter-project.liquid': '新手作品，用户 2026-09-23 决定保留（#65）',
+  'sections/yarn-cart-assurance.liquid': '购物车保障条，购物车整页改版后不在模板中，用户 2026-10-03 决定保留可加回（#124）',
 };
 
 const list = dir => (fs.existsSync(dir) ? fs.readdirSync(dir, { recursive: true }) : [])

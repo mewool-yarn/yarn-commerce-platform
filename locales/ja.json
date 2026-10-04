@@ -537,6 +537,26 @@
       "collapsed": "ギフトカードカードの受取人フォームを折りたたみました"
     }
   },
+  "yarn_cart": {
+    "title": "カート",
+    "item_count": {
+      "one": "{{ count }}点",
+      "other": "{{ count }}点"
+    },
+    "subtotal": {
+      "one": "小計（{{ count }}点）",
+      "other": "小計（{{ count }}点）"
+    },
+    "heading_product": "商品",
+    "heading_quantity": "数量",
+    "heading_total": "金額",
+    "remove": "削除",
+    "checkout": "レジに進む",
+    "summary_heading": "ご注文内容",
+    "empty_title": "カートはまだ空です",
+    "option": "{{ name }}：{{ value }}",
+    "view_cart": "カートを見る"
+  },
   "yarn_pdp": {
     "per_ball": "/ 玉",
     "per_ball_tax_included": "/ 玉（税込）",

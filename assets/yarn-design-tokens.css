@@ -35,14 +35,14 @@ html[lang]:root {
 
 /* BEGIN generated colors — edit design/tokens/colors.json, then run npm run tokens */
 :root {
-  --yarn-home-action: #675144; /* umber-700 · hitoami 低饱和主操作：首页按钮；毛线详情页加入、选中与价格 */
+  --yarn-home-action: #675144; /* umber-700 · hitoami 低饱和主操作：首页按钮；毛线详情页加入、选中与价格；购物车结账与价格 */
   --yarn-home-thread: #8c8880; /* sand-600 · hitoami 小猫展开的装饰毛线 */
   --yarn-home-rope: #b8b1a4; /* sand-400 · 首页导览条挂线的线芯（线纹用 home-thread）；不得用于文字 */
   --yarn-bg-page: #f7f7f5; /* cream-100 · 页面底 */
   --yarn-bg-surface: #fffefa; /* cream-50 · 卡片、导航、横幅、输入框面 */
   --yarn-bg-sunken: #ebe5dc; /* sand-100 · 次级区块（暖砂） */
   --yarn-bg-warm: #ece8dc; /* sand-150 · 暖米区块（配色方案 5） */
-  --yarn-bg-band: #f5f1e8; /* sand-50 · 暖米面板：毛线详情「要买几团？」估算面板 */
+  --yarn-bg-band: #f5f1e8; /* sand-50 · 暖米面板：毛线详情「要买几团？」估算面板；购物车汇总面板与空购物车底带 */
   --yarn-bg-inverse: #8f3c26; /* clay-700 · 深色反白区块 */
   --yarn-text-primary: #2f302f; /* charcoal-900 · 正文、通用标题、Rise 原生文字 */
   --yarn-text-heading: #13202d; /* navy-900 · 商品家族标题 */

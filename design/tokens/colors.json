@@ -39,14 +39,14 @@
     "umber-700": "#675144"
   },
   "roles": {
-    "home-action": { "value": "umber-700", "use": "hitoami 低饱和主操作：首页按钮；毛线详情页加入、选中与价格" },
+    "home-action": { "value": "umber-700", "use": "hitoami 低饱和主操作：首页按钮；毛线详情页加入、选中与价格；购物车结账与价格" },
     "home-thread": { "value": "sand-600", "use": "hitoami 小猫展开的装饰毛线" },
     "home-rope": { "value": "sand-400", "use": "首页导览条挂线的线芯（线纹用 home-thread）；不得用于文字" },
     "bg-page": { "value": "cream-100", "use": "页面底" },
     "bg-surface": { "value": "cream-50", "use": "卡片、导航、横幅、输入框面" },
     "bg-sunken": { "value": "sand-100", "use": "次级区块（暖砂）" },
     "bg-warm": { "value": "sand-150", "use": "暖米区块（配色方案 5）", "pending": "P3：与 bg-sunken 合并或删除" },
-    "bg-band": { "value": "sand-50", "use": "暖米面板：毛线详情「要买几团？」估算面板" },
+    "bg-band": { "value": "sand-50", "use": "暖米面板：毛线详情「要买几团？」估算面板；购物车汇总面板与空购物车底带" },
     "bg-inverse": { "value": "clay-700", "use": "深色反白区块" },
 
     "text-primary": { "value": "charcoal-900", "use": "正文、通用标题、Rise 原生文字" },

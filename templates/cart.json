@@ -13,44 +13,12 @@
       "type": "main-cart-items",
       "settings": {
         "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "cart-footer": {
-      "type": "main-cart-footer",
-      "blocks": {
-        "subtotal": {
-          "type": "subtotal",
-          "settings": {
-          }
-        },
-        "buttons": {
-          "type": "buttons",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "subtotal",
-        "buttons"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "padding_top": 20,
-        "padding_bottom": 40
-      }
-    },
-    "assurance": {
-      "type": "yarn-cart-assurance",
-      "settings": {
-        "color_scheme": "scheme-1"
+        "yarn_link": "shopify://collections/yarn",
+        "help_link": "shopify://pages/contact"
       }
     }
   },
   "order": [
-    "cart-items",
-    "cart-footer",
-    "assurance"
+    "cart-items"
   ]
 }

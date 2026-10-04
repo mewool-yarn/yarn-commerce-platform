@@ -1,5 +1,7 @@
 // npm run proof 的检查范围。改动页面或商品下架时更新这里。
 
+const CART_SEED = ['/products/demo-cotton-candy-yarn-50g', '/products/demo-pierre-penguin-crochet-kit', '/products/demo-flower-bouquet-blanket-finished'];
+
 module.exports = {
   baseUrl: 'http://127.0.0.1:9292',
 
@@ -20,7 +22,10 @@ module.exports = {
     { key: 'yarn-pdp', path: '/products/demo-cotton-candy-yarn-50g' },
     { key: 'kit-pdp', path: '/products/demo-pierre-penguin-crochet-kit' },
     { key: 'finished-pdp', path: '/products/demo-flower-bouquet-blanket-finished' },
-    { key: 'cart-drawer', path: '/products/demo-nukumori-yarn-50g', openCart: true },
+    // 先加入毛线 / 编织包 / 成品各一件：cart-drawer 在商品页点页头购物车打开抽屉，cart 是整页；cart-empty 是全新会话。
+    { key: 'cart-drawer', path: '/products/demo-cotton-candy-yarn-50g', seedProducts: CART_SEED, openCart: true },
+    { key: 'cart', path: '/cart', seedProducts: CART_SEED },
+    { key: 'cart-empty', path: '/cart' },
     { key: 'search', path: '/search?q=demo' },
     { key: 'commercial-disclosure', path: '/pages/commercial-disclosure' },
     { key: 'returns-exchanges', path: '/pages/returns-exchanges' },
@@ -38,7 +43,7 @@ module.exports = {
     '.yx-content-card__title', '.yx-content-card__text',
     '.product__title', '.product__description', '.product__text', '.rte', '.price', '.yp-kitstory',
     '.product-form__input legend', '.product-form__input label', '.product-form__input option',
-    '.cart-item__name', '.cart-item__details', '.cart-notification-product',
+    '.cart-item__name', '.cart-item__details', '.cart-notification-product', '.yarn-cart-item__name', '.yarn-cart-item__meta',
     '.collection-hero__title', '.collection-hero__description',
     '.header__menu-item', '.menu-drawer__menu-item', '.list-menu__item', '.footer-block__details-content',
     '.predictive-search', '.yx-project-pick__title', '[data-proof-content]',
